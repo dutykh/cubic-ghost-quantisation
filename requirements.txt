@@ -1,0 +1,5 @@
+# Authors: Davide Batic and Denys Dutykh (Mathematics Department, Khalifa University of
+# Science and Technology, Abu Dhabi, UAE).
+numpy
+scipy
+matplotlib

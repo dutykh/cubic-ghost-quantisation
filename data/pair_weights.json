@@ -1,0 +1,16 @@
+{
+  "dimension": 5,
+  "m": 1.0,
+  "lambda": 3.0,
+  "E0": 0.6375623347760755,
+  "pair_energy": [
+    3.5769478961583077,
+    5.179524706436742
+  ],
+  "pair_insertion_norm": -0.00083123625745971,
+  "combined_pair_weight": 0.02263665444112985,
+  "spectral_weight_sum": -1.0675663147135719,
+  "double_commutator_expectation": -1.06756631471357,
+  "boundary_identity_max_error": 3.552713678800501e-15,
+  "free_sum": -0.9999999999999998
+}
