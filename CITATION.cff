@@ -1,0 +1,43 @@
+# Authors: Davide Batic and Dr. Denys Dutykh (Mathematics Department, Khalifa University
+# of Science and Technology, Abu Dhabi, UAE)
+#
+# Citation metadata in Citation File Format 1.2.0, from which GitHub draws its button
+# "Cite this repository". The article has not been published yet, so the software itself
+# is cited.
+
+cff-version: 1.2.0
+message: "If you use these codes or data, please cite this software as given below."
+title: "cubic-ghost-quantisation: spectrum and positive metrics of the cubic ghost oscillator"
+abstract: >-
+  Python codes and data accompanying the article "Spectrum and positive metrics of the cubic
+  ghost oscillator" by D. Batic and D. Dutykh. They compute the spectra of finite compressions
+  of the cubic ghost generator of Holdom, which is similar to the imaginary cubic oscillator,
+  in double precision with condition numbers and residuals; its lowest 31 real levels from
+  determinants of large compressions in decimal arithmetic of 100 to 140 digits, checked by a
+  finite-difference calculation in coordinate space; and the finite-matrix check of the
+  complex-pair weights and of the sum rule of the two-point function.
+type: software
+version: "1.0.0"
+date-released: "2026-11-15"
+license: LGPL-2.1-only
+repository-code: "https://github.com/dutykh/cubic-ghost-quantisation"
+keywords:
+  - quantum-mechanics
+  - spectral-theory
+  - operator-theory
+  - eigenvalue-problem
+  - pt-symmetry
+  - non-hermitian-physics
+  - quadratic-gravity
+  - python
+  - research-code
+  - reproducible-research
+authors:
+  - family-names: Batic
+    given-names: Davide
+    affiliation: "Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates"
+    orcid: "https://orcid.org/0000-0002-7619-4900"
+  - family-names: Dutykh
+    given-names: Denys
+    affiliation: "Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates"
+    orcid: "https://orcid.org/0000-0001-5247-2788"

@@ -1,10 +1,12 @@
 <!-- Authors: Davide Batic and Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, UAE) -->
 
-# Spectrum and positive metrics of the cubic ghost oscillator
+# cubic-ghost-quantisation: spectrum and positive metrics of the cubic ghost oscillator
 
-**Authors:** Davide Batic, Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, UAE)
+![Eigenvalues of the compressions with N = 40 and N = 80 against the converged levels](figures/ghost-truncation-spectrum.svg)
 
-Higher-derivative theories such as quadratic gravity contain ghosts, modes with negative canonical norm, and raise the questions of spectral stability and of a probability interpretation. The cubic ghost oscillator of Holdom (*Making sense of ghosts*, Nuclear Physics B 1008 (2024) 116696) is a quantum-mechanical model in which these questions are studied. The article constructs the closed generator of this oscillator through an explicit unitary equivalence with the imaginary cubic oscillator on the real line, and deduces that its spectrum is real, strictly positive, discrete and simple. The non-real eigenvalues found in finite truncations are therefore truncation artefacts. This repository holds the numerical material behind that statement: the code and the data of the figure of finite-truncation spectra, which sets the stable low-lying levels against the moving truncation edge, and the finite-matrix check of the complex-pair residues and of the sum rule. Every number quoted in the caption of the figure can be read in the tables of `data/` and recomputed with one command.
+The eigenvalues of the finite compressions of the cubic ghost generator with N = 40 (upper panel) and N = 80 (lower panel), for m = 1 and λ = 3, with the imaginary part on a scale that is linear for |Im E| < 1 and logarithmic outside, against the converged levels E_0, …, E_30 drawn as short bars. The low-lying real eigenvalues sit on the levels. Near the truncation edge complex-conjugate pairs appear, together with real eigenvalues that differ from the converged values, and this edge moves to higher energies as N grows: the first non-real pair is 15.06 ± 1.45 i for N = 40 and 28.22 ± 1.11 i for N = 80. The closed operator itself has a real, strictly positive, discrete and simple spectrum, which is a theorem of the article.
+
+Higher-derivative theories such as quadratic gravity contain ghosts, modes with negative canonical norm, and raise the questions of spectral stability and of a probability interpretation. The cubic ghost oscillator of Holdom (*Making sense of ghosts*, Nuclear Physics B 1008 (2024) 116696, https://doi.org/10.1016/j.nuclphysb.2024.116696) is a quantum-mechanical model in which these questions are studied. The article constructs the closed generator of this oscillator through an explicit unitary equivalence with the imaginary cubic oscillator on the real line, and deduces that its spectrum is real, strictly positive, discrete and simple. The non-real eigenvalues found in finite truncations are therefore truncation artefacts. This repository holds the numerical material behind that statement: the code and the data of the figure of finite-truncation spectra, which sets the stable low-lying levels against the moving truncation edge, and the finite-matrix check of the complex-pair residues and of the sum rule. Every number quoted in the caption of the figure can be read in the tables of `data/` and recomputed with one command.
 
 ## The model and its compressions
 
@@ -45,11 +47,7 @@ The table lists the numbers quoted in the caption of the figure, with the additi
 | The eigenvalues of the compressions with N = 40 and N = 80 (m = 1, λ = 3) | `data/spectrum_N40.csv`, `data/spectrum_N80.csv` | The first non-real pair is 15.0567161 ± 1.45265335 i for N = 40 and 28.2206364 ± 1.10622596 i for N = 80; the largest condition numbers are 9.2 × 10³ and 7.2 × 10⁷, and the relative residuals are below 1.3 × 10⁻¹⁵ |
 | The sum rule and its boundary terms for the compression of dimension 5 | `data/pair_weights.json` | The weights add up to −1.0675663147, the ground-level expectation of the double commutator; the boundary form agrees to 3.6 × 10⁻¹⁵; the free sum is −1 |
 
-## What the figure shows
-
-![Eigenvalues of the compressions with N = 40 and N = 80 against the converged levels](figures/ghost-truncation-spectrum.svg)
-
-The eigenvalues of the compressions with N = 40 (upper panel) and N = 80 (lower panel), for m = 1 and λ = 3, are drawn with the imaginary part on a scale that is linear for |Im E| < 1 and logarithmic outside, against the converged levels E_0, …, E_30 drawn as short bars. The low-lying real eigenvalues sit on the levels. Near the truncation edge complex-conjugate pairs appear, together with real eigenvalues that differ from the converged values, and this edge moves to higher energies as N grows.
+## What the computations show
 
 These computations support the picture and do not prove it. The levels are real roots of finite determinants, chosen near their starting values: they are stable under a change of cutoff and of arithmetic and agree with a calculation that does not use the matrices, but they come with no error bound for the infinite-dimensional operator, and they do not count all the levels in an interval. The statements about the spectrum of the closed operator are theorems of the article. The compressions are strongly non-normal, so that the last digits of the double-precision eigenvalues near the truncation edge are rounding noise, although the tables print seventeen digits.
 
@@ -62,7 +60,7 @@ python3 -m pip install -r requirements.txt
 make
 ```
 
-recomputes the tables of `data/`, the figure of `figures/` and `data/pair_weights.json` in a couple of seconds. The two parts also run separately, with `make spectra` and `make pairs`, or as `python3 code/truncation_spectra.py` (with the option `--skip-fd` to omit the coordinate-space calculation) and `python3 code/pair_weights.py`. No random numbers are used, and the decimal-arithmetic tables do not depend on the machine; the double-precision spectra agree to the accuracy that their condition numbers allow.
+recomputes the tables of `data/`, the figure of `figures/` and `data/pair_weights.json` in a couple of seconds. The two parts also run separately, with `make spectra` and `make pairs`, or as `python3 code/truncation_spectra.py` (with the option `--skip-fd` to omit the coordinate-space calculation) and `python3 code/pair_weights.py`. No random numbers are used, and the decimal-arithmetic tables do not depend on the machine; the double-precision spectra agree to the accuracy that their condition numbers allow. With NumPy 2.5 and SciPy 1.18, a run reproduces the decimal-arithmetic tables and `data/pair_weights.json` exactly, the low-lying real eigenvalues of the double-precision spectra to within 10⁻¹¹, and the most ill-conditioned eigenvalues, at the onset of the first complex pair, to within 1.1 × 10⁻¹⁰ for N = 40 and 1.4 × 10⁻⁶ for N = 80, where their condition numbers reach 9.2 × 10³ and 7.2 × 10⁷.
 
 ## Contents
 
@@ -79,6 +77,25 @@ recomputes the tables of `data/`, the figure of `figures/` and `data/pair_weight
 | `data/pair_weights.json` | The quantities of the pair-weight check |
 | `figures/` | The figure of the article as vector PDF, and the same figure as SVG for this page |
 
+## How to cite
+
+The article, D. Batic and D. Dutykh, *Spectrum and positive metrics of the cubic ghost oscillator*, has not been published yet. Until it is, please cite this repository as software:
+
+```text
+D. Batic and D. Dutykh, cubic-ghost-quantisation: spectrum and positive metrics of the cubic ghost
+oscillator, software, version 1.0.0 (2026).
+```
+
+https://github.com/dutykh/cubic-ghost-quantisation
+
+The button "Cite this repository" in the right-hand column of this page gives the same reference, read from `CITATION.cff`.
+
 ## Licence
 
-Copyright (C) 2026 Davide Batic and Denys Dutykh. The code and the data are distributed under the GNU Lesser General Public License, version 2.1; see `LICENSE`. Please cite the article *Spectrum and positive metrics of the cubic ghost oscillator* when using them.
+Copyright (C) 2026 Davide Batic and Denys Dutykh. The code and the data are distributed under the GNU Lesser General Public License, version 2.1; see `LICENSE`.
+
+## Authors
+
+Davide Batic and Denys Dutykh, Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, United Arab Emirates.
+
+https://www.denys-dutykh.com/
